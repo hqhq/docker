@@ -63,9 +63,7 @@ func (daemon *Daemon) Create(config *runconfig.Config, hostConfig *runconfig.Hos
 	if err := daemon.mergeAndVerifyConfig(config, img); err != nil {
 		return nil, nil, err
 	}
-	if !config.NetworkDisabled && daemon.SystemConfig().IPv4ForwardingDisabled {
-		warnings = append(warnings, "IPv4 forwarding is disabled.")
-	}
+
 	if hostConfig == nil {
 		hostConfig = &runconfig.HostConfig{}
 	}
